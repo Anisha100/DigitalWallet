@@ -7,7 +7,7 @@ server = 'database.payments.mukham.in'
 database = 'Payments_db'
 username = 'paymentsdb'
 password = '{PaymentsDatabase@123}'   
-conn=pyodbc.connect('DRIVER={MySQL ODBC 8.0 ANSI Driver}; SERVER='+server+';PORT=3306;DATABASE='+database+';UID='+username+';PWD='+ password)
+conn=pyodbc.connect('DRIVER={MySQL ODBC 8.0 Unicode Driver}; SERVER='+server+';PORT=3306;DATABASE='+database+';UID='+username+';PWD='+ password)
 cursor=conn.cursor()
 
 def createUserTable():
