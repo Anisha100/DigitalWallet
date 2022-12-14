@@ -3,12 +3,11 @@ from io import StringIO
 import csv
 from datetime import datetime
 import os
-server = 'fidopayments.database.windows.net'
-database = 'paymentsdb'
-username = 'sql_user'
-password = '{Password12345*}'   
-driver= '{ODBC Driver 17 for SQL Server}'
-conn=pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+server = 'database.payments.mukham.in'
+database = 'Payments_db'
+username = 'paymentsdb'
+password = '{PaymentsDatabase@123}'   
+conn=pyodbc.connect('SERVER=tcp:'+server+';PORT=3306;DATABASE='+database+';UID='+username+';PWD='+ password)
 cursor=conn.cursor()
 
 def createUserTable():
