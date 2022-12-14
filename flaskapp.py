@@ -170,7 +170,7 @@ def signin():
 	
 	uname=getUsernameFromToken(token)
 	print("SIGNIN Uname", uname)
-	#deleteToken(token)
+	deleteToken(token)
 	now=datetime.now()
 	date_time = now.strftime("%m/%d/%Y-%H:%M:%S")
 	print("Signed in successfully")
