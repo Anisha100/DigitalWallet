@@ -233,7 +233,7 @@ def getFileListFromUser(user):
 		
 def createAuthTable():
 	try:
-		cursor.execute("CREATE TABLE Auth(username VARCHAR(50), token VARCHAR(50) UNIQUE)")
+		cursor.execute("CREATE TABLE Auth(username VARCHAR(50), token VARCHAR(70) UNIQUE)")
 		cursor.commit()
 	except:
 		pass
