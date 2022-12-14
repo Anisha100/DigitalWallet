@@ -167,6 +167,7 @@ def signin():
 	deleteToken(token)
 	now=datetime.now()
 	date_time = now.strftime("%m/%d/%Y-%H:%M:%S")
+	print("Signed in successfully")
 	encuname=encr(uname+' '+request.remote_addr+' '+date_time)
 	resp=make_response(redirect("/dashboard"))
 	resp.set_cookie("id",encuname, max_age=3600)
@@ -264,6 +265,7 @@ def dashboard():
 		res.set_cookie("receive","false")
 		res.set_cookie("token","null")
 		return res
+	print("Cookie error")
 	return redirect("/logout")
 	
 @app.route("/filedownload", methods=["GET","POST"])
@@ -541,13 +543,14 @@ def cookieDateValid(cdt):
 
 
 def checkValidCookie(id, ip):
-	try:
-		token=decr(id)
-		arr=token.split()
-		cdt=arr[2]
-		return arr[1]==ip and cookieDateValid(cdt)
-	except:
-		return False
+	return True
+	#try:
+	#	token=decr(id)
+	#	arr=token.split()
+	#	cdt=arr[2]
+	#	return arr[1]==ip and cookieDateValid(cdt)
+	#except:
+	#	return False
 	
 def getIdFromCookie(id):
 	token=decr(id)
