@@ -427,7 +427,7 @@ def register_complete():
     ip=request.remote_addr
     ip1=encuname[1]
     if not ip==ip1:
-	abort(401)
+        abort(401)
     credentials=read_key(uname)
     data = cbor.decode(request.get_data())
     client_data = ClientData(data["clientDataJSON"])
