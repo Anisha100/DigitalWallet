@@ -116,7 +116,7 @@ def otpinp():
 		fln=str(uuid.uuid4())
 		addUser(uname,eml,name,fln)
 		print(uname,eml,name)
-		resp= make_response(render_template("/initlogin",encuname=encr(uname+"$"+request.remote_addr)))
+		resp= make_response(redirect("/initlogin"))
 		resp.set_cookie("username",uname,max_age=60*60*24*365*50)
 		return resp
 	else:
