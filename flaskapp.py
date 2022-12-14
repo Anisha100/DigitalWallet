@@ -171,6 +171,7 @@ def signin():
 	encuname=encr(uname+' '+request.remote_addr+' '+date_time)
 	resp=make_response(redirect("/dashboard"))
 	resp.set_cookie("id",encuname, max_age=3600)
+	print("SIGNIN Uname", uname)
 	resp.set_cookie("type","admin")
 	return resp
 
