@@ -7,8 +7,7 @@ server = 'database.payments.mukham.in'
 database = 'Payments_db'
 username = 'paymentsdb'
 password = '{PaymentsDatabase@123}'   
-driver= '{ODBC Driver 17 for SQL Server}'
-conn=pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+conn=pyodbc.connect('SERVER=tcp:'+server+';PORT=3306;DATABASE='+database+';UID='+username+';PWD='+ password)
 cursor=conn.cursor()
 
 def createUserTable():
