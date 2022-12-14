@@ -128,12 +128,12 @@ def initlogin():
 	if not uname:
 		return render_template("username_setcookies.html")
 	else:
-		return redirect("/authenticate")
+		return render_template("authn.html")
 
 @app.route("/setcookie", methods=["GET", "POST"])
 def setcookie():
 	user=request.form['uname']
-	resp= make_response(redirect("/authenticate"))
+	resp= make_response(redirect("/initlogin"))
 	resp.set_cookie("username",user,max_age=60*60*24*365*50)
 	return resp
 
