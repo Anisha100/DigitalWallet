@@ -223,12 +223,13 @@ def fidoregplatform():
 
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
-	getUserCount()
+	#getUserCount()
 	if checkValidCookie(request.cookies.get('id'),request.remote_addr):
 		type=request.cookies.get('type')
 		uname=getIdFromCookie(request.cookies.get("id"))
 		name=getNameFromUsername(uname)
 		rec=''
+		print("Dashboard Username",uname)
 		if uname=="00":
 			return redirect("/logout")
 		try:
@@ -261,6 +262,7 @@ def dashboard():
 			print('change',sendamt,sender)
 			print('change',recamt,receiver)
 		name=getNameFromUsername(uname)
+		print("Dashboard name",name)
 		res=make_response(render_template("dashboard_admin.html",uname=uname, name=name))
 		res.set_cookie("receive","false")
 		res.set_cookie("token","null")
