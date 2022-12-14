@@ -146,6 +146,8 @@ def authenticate():
 	eid=getEmailFromUsername(uname)
 	if verifyUser(eid,'login for payments'):
 		addToken(uname,token)
+		print("Authn token",token)
+		print("Authn uname", uname)
 		return redirect('/signin?token='+tok)
 	else:
 		return redirect('/loginotp?uname='+uname)
@@ -162,8 +164,9 @@ def signin():
 	if not ip==ip1:
 		print('IP not matched')
 		return redirect("/logout")
+	print("SIGNIN Token", token)
 	uname=getUsernameFromToken(token)
-	print(uname)
+	print("SIGNIN Uname", uname)
 	deleteToken(token)
 	now=datetime.now()
 	date_time = now.strftime("%m/%d/%Y-%H:%M:%S")
