@@ -106,12 +106,14 @@ def otpinp():
 	tok=dat[5]
 	ip=request.remote_addr
 	if not ip==ip1:
+		print("Email check: IP Mismatch")
 		return redirect("/logout")
 	uname1=getUsernameFromToken(tok)
 	print(tok,uname,uname1)
 	deleteToken(tok)
 	print(uname, uname1)
 	if uname==uname1 and linkDateValid(tm):
+		print("Email check: Signup success")
 		fln=str(uuid.uuid4())
 		addUser(uname,eml,name,fln)
 		print(uname,eml,name)
