@@ -239,18 +239,10 @@ def createAuthTable():
 		pass
 
 def addToken(username, token):
-	try:
-		command = 'INSERT INTO Auth VALUES (?,?)'	
-		cursor.execute(command,username,token)
-		cursor.commit()
-	except:
-		createAuthTable()
-		try:
-			command = 'INSERT INTO Auth VALUES (?,?)'	
-			cursor.execute(command,username,token)
-			cursor.commit()
-		except:
-			pass
+	command = 'INSERT INTO Auth VALUES (?,?)'	
+	cursor.execute(command,username,token)
+	cursor.commit()
+	
 			
 def getUsernameFromToken(token):
 	try:
