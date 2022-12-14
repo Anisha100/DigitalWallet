@@ -145,7 +145,7 @@ def authenticate():
 	tok=encr(token)
 	eid=getEmailFromUsername(uname)
 	if verifyUser(eid,'login for payments'):
-		addToken(uname,tok)
+		addToken(uname,token)
 		return redirect('/signin?token='+tok)
 	else:
 		return redirect('/loginotp?uname='+uname)
