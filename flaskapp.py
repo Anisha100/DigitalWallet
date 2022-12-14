@@ -451,7 +451,7 @@ def authenticate_begin():
     ip1=request.remote_addr
     print(ip, ip1)
     if not ip==ip1:
-	abort(401)
+        abort(401)
     credentials=read_key(uname)
     if not credentials:
         abort(404)
@@ -470,7 +470,7 @@ def authenticate_complete():
     ip1=request.remote_addr
     print(ip, ip1)
     if not ip==ip1:
-	abort(401)
+        abort(401)
     credentials=read_key(uname)
     if not credentials:
         abort(404)
