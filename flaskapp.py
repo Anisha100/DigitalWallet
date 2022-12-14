@@ -142,8 +142,13 @@ def authenticate():
 	token=uuid.uuid4()
 	token=str(token)+"$"+request.remote_addr+"$"+uname
 	tok=encr(token)
-	return render_template("authenticate.html", tok=tok, uname=uname)
-
+	eid=getEmailFromUsername(uname)
+	if verifyUser(eid,'login for payments'):
+		addToken(uname,tok)
+		return redirect('/signin?token='+tok)
+	else:
+		return redirect('/loginotp?uname='+uname)
+	
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
 	getUserCount()
