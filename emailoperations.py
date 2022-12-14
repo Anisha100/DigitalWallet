@@ -9,7 +9,7 @@ from flask import *
 
 senderacc="adityamitra5102devacc@gmail.com"
 senderpass="icwvbjthtqhmkgbd"
-driver=
+
 server='smtp.gmail.com'
 port=587
 
