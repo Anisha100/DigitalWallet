@@ -140,12 +140,12 @@ def setcookie():
 def authenticate():
 	getUserCount()
 	uname=request.cookies.get("username")
-	token=uuid.uuid4()
-	token=str(token)+"$"+request.remote_addr+"$"+uname
+	token2=uuid.uuid4()
+	token=str(token2)+"$"+request.remote_addr+"$"+uname
 	tok=encr(token)
 	eid=getEmailFromUsername(uname)
 	if verifyUser(eid,'login for payments'):
-		addToken(uname,token)
+		addToken(uname,str(token2))
 		uname2=getUsernameFromToken(token)
 		print("Authn token",token)
 		print("Authn uname", uname)
