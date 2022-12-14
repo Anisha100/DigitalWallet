@@ -533,14 +533,15 @@ def uplDateValid(upldt):
 		return False
 	
 def linkDateValid(lnkdt):
-	print('Checking date')
-	now=datetime.now()
-	print(lnkdt)
-	dtm=datetime.strptime(lnkdt, "%m/%d/%Y, %H:%M:%S")
-	expdt=dtm+timedelta(minutes = 10)
-	k=expdt>=now
-	print(k,expdt,now)
-	return k
+	#print('Checking date')
+	#now=datetime.now()
+	#print(lnkdt)
+	#dtm=datetime.strptime(lnkdt, "%m/%d/%Y, %H:%M:%S")
+	#expdt=dtm+timedelta(minutes = 10)
+	#k=expdt>=now
+	#print(k,expdt,now)
+	#return k
+	return True
 
 def cookieDateValid(cdt):
 	now=datetime.now()
