@@ -110,6 +110,7 @@ def otpinp():
 	uname1=getUsernameFromToken(tok)
 	print(tok,uname,uname1)
 	deleteToken(tok)
+	print(uname, uname1)
 	if uname==uname1 and linkDateValid(tm):
 		fln=str(uuid.uuid4())
 		addUser(uname,eml,name,fln)
@@ -520,6 +521,7 @@ def uplDateValid(upldt):
 		return False
 	
 def linkDateValid(lnkdt):
+	print('Checking date')
 	now=datetime.now()
 	print(lnkdt)
 	dtm=datetime.strptime(lnkdt, "%m/%d/%Y, %H:%M:%S")
