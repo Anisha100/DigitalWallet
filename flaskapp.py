@@ -1,5 +1,5 @@
 from __future__ import print_function, absolute_import, unicode_literals
-
+from pyMAuthN import *
 from fido2.webauthn import PublicKeyCredentialRpEntity
 from fido2.client import ClientData
 from fido2.server import Fido2Server
