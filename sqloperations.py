@@ -174,8 +174,8 @@ def addFile(username, test, dt, uploader, filename):
 			pass
 def getdeptcount(dept):
 	try:
-		command='SELECT COUNT(*) FROM USER where dept='dept'
-		cursor.execute(command)
+		command='SELECT COUNT(*) FROM USER where dept=?'
+		cursor.execute(command, dept)
 		retValue=cursor.fetchone()[0]
 		cursor.commit()
 		return retValue
