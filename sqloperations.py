@@ -12,25 +12,33 @@ cursor=conn.cursor()
 
 def createUserTable():
 	try:
-		cursor.execute("CREATE TABLE User(username VARCHAR(50) UNIQUE, email VARCHAR(50), name VARCHAR(50), fln VARCHAR(50))")
+		cursor.execute("CREATE TABLE User(username VARCHAR(50) UNIQUE, email VARCHAR(50), name VARCHAR(50), fln VARCHAR(50), dept VARCHAR(50)")
 		cursor.commit()
 	except:
 		pass
 
-def addUser(username, email, name, fln):
+def addUser(username, email, name, fln, dept):
 	try:
 		command = 'INSERT INTO User VALUES (?,?,?,?)'	
-		cursor.execute(command,username,email,name,fln)
+		cursor.execute(command,username,email,name,fln,dept)
 		cursor.commit()
 	except:
 		createUserTable()
 		try:
-			command = 'INSERT INTO User VALUES (?,?,?)'	
-			cursor.execute(command,username,email,name)
+			command = 'INSERT INTO User VALUES (?,?,?,?)'	
+			cursor.execute(command,username,email,name,dept)
 			cursor.commit()
 		except:
 			pass
-
+		
+def getDept(dept):
+	try: 
+		command='SELECT dept FROM User WHERE dept=?'
+		cursor.execute(command,dept)
+		retValue=cursor.fetchone()[0]
+		cursor.commit()
+		return retValue
+	
 def getFileFromUsername(username):
 	try:
 		command ='SELECT fln FROM User WHERE username=?'
@@ -161,7 +169,14 @@ def addFile(username, test, dt, uploader, filename):
 			cursor.commit()
 		except:
 			pass
-			
+def getdeptcount(dept):
+	try:
+		command='SELECT COUNT(*) FROM USER where dept='dept'
+		cursor.execute(command)
+		retValue=cursor.fetchone()[0]
+		cursor.commit()
+		return retValue
+	
 def getUserFromFile(filename):
 	try:
 		command ='SELECT username FROM File WHERE filename=?'
