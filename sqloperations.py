@@ -179,6 +179,8 @@ def getdeptcount(dept):
 		retValue=cursor.fetchone()[0]
 		cursor.commit()
 		return retValue
+	except:
+		return "Error"
 	
 def getUserFromFile(filename):
 	try:
