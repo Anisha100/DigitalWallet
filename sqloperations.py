@@ -38,6 +38,9 @@ def getDept(dept):
 		retValue=cursor.fetchone()[0]
 		cursor.commit()
 		return retValue
+	except:
+		return "error"
+
 	
 def getFileFromUsername(username):
 	try:
