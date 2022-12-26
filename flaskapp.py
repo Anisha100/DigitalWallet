@@ -278,6 +278,25 @@ def dashboard():
 	print("Cookie error")
 	return redirect("/logout")
 	
+@app.route("/pendingreq", methods=["GET","POST"])
+def pendingreq():
+	getUserCount()
+	if checkValidCookie(request.cookies.get('id'),request.remote_addr):
+		type=request.cookies.get('type')
+		uname="00"
+		if type=="admin":
+			uname=getIdFromCookie(request.cookies.get("id"))
+			print(uname, "admin")
+		if type=="user":
+			token=getIdFromCookie(request.cookies.get("id"))
+			if not tokenValid(token):
+				return render_template("error.html", reason="Token expired")
+			uname=getUsernameFromTag(token)
+		print(uname)
+		tabdata=getRequests(uname)
+		return render_template("pendingreq.html",table_data=tabdata)
+	return redirect("/")
+	
 @app.route("/filedownload", methods=["GET","POST"])
 def filedownload():
 	getUserCount()
