@@ -201,7 +201,7 @@ def inittag():
 			return render_template("error.html",reason="Insufficient Funds")
 		if exp2<1:
 			return render_template("error.html", reason="Amount must be positive")
-		tagid=uuid.uuid4()
+		tagid=str(uuid.uuid4())
 		addTag(uname,tagid,iname,exp)
 		#eml=getEmailFromUsername(uname)
 		#sendEmailTokenAdd(eml,iname,exp)
