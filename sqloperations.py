@@ -96,12 +96,9 @@ def addTag(username, tagid, name, expiry):
 		cursor.commit()
 	except:
 		createTagsTable()
-		try:
-			command = 'INSERT INTO Tags VALUES (?,?,?,?)'	
-			cursor.execute(command,username,tagid,name,expiry)
-			cursor.commit()
-		except:
-			pass
+		command = 'INSERT INTO Tags VALUES (?,?,?,?)'	
+		cursor.execute(command,username,tagid,name,expiry)
+		cursor.commit()
 
 def getUsernameFromTag(tagid):
 	try:
