@@ -105,8 +105,7 @@ def otpinp():
 	ip1=dat[4]
 	tok=dat[5]
 	ip=request.remote_addr
-	if not ip==ip1:
-		print("Email check: IP Mismatch")
+
 	uname1=getUsernameFromToken(tok)
 	print(tok,uname,uname1)
 	deleteToken(tok)
