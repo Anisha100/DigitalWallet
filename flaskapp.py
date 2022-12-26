@@ -277,26 +277,7 @@ def dashboard():
 		return res
 	print("Cookie error")
 	return redirect("/logout")
-
-@app.route("/inittransfer", methods=["GET","POST"])
-def inittransfer():
-	tagid=request.args.get('tagid')
-	return render_template("transferto.html",token=tagid)
-
-@app.route("/finishtransfer",methods=["GET","POST"])
-def finishtransfer():
-	getUserCount()
-	recuname=request.form['uname'].strip()
-	tok=request.form['tok'].strip()
-	token=tok[4:].strip()
-	print('Token transfer'+token)
-	senderuname=getUsernameFromTag(token)
-	amt=getExpiryFromTag(token)
-	print(senderuname,recuname,amt,tok)
-	addReq(senderuname,recuname,amt,tok)
-	return redirect("/")
 	
-
 @app.route("/pendingreq", methods=["GET","POST"])
 def pendingreq():
 	getUserCount()
